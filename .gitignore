@@ -1,0 +1,35 @@
+# C++ build artifacts
+cmake-build-debug/
+cmake-build-release/
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Libtorch (exclude binary distribution)
+external/libtorch/
+
+# CSV data files (optional - uncomment if you want to exclude data)
+# database/
+
+# Test results
+*.xml
+*.html
+
+# Temporary files
+*.tmp
+*.temp
