@@ -32,6 +32,26 @@ This project implements three different neural network approaches for breast can
 - **Test Loss**: 0.187598
 - **Approach**: PyTorch DataLoader with custom Dataset class for batch processing
 
+## Visualizations
+
+The project includes comprehensive visualization tools to analyze model performance:
+
+### ROC Curves
+![ROC Curves](assets/roc_curves.png)
+Receiver Operating Characteristic curves showing the trade-off between true positive rate and false positive rate for all three models.
+
+### Confusion Matrices
+![Confusion Matrices](assets/confusion_matrices.png)
+Detailed confusion matrices for each model showing true positives, true negatives, false positives, and false negatives.
+
+### Performance Comparison
+![Performance Comparison](assets/performance_comparison.png)
+Side-by-side comparison of model accuracy and loss metrics, highlighting the relative performance of each approach.
+
+### Training Curves
+![Training Curves](assets/training_curves.png)
+Simulated training progress showing how accuracy and loss evolve over epochs for each model.
+
 ## Project Structure
 
 ```
@@ -49,9 +69,16 @@ BreastCancerPrediction/
 │   └── NNCustumDatasets.cpp    # Custom dataset training
 ├── database/
 │   └── data.csv                # Wisconsin Diagnostic Dataset
+├── assets/
+│   ├── roc_curves.png          # ROC curve visualizations
+│   ├── confusion_matrices.png  # Confusion matrix plots
+│   ├── performance_comparison.png # Model performance comparison
+│   └── training_curves.png     # Training progress visualization
 ├── external/
 │   ├── libtorch/               # PyTorch C++ library
 │   └── csv-parser/             # CSV parsing library
+├── visualize_models.py         # Python visualization script
+├── model_results.json          # Model performance results
 └── CMakeLists.txt             # Build configuration
 ```
 
@@ -61,6 +88,8 @@ BreastCancerPrediction/
 - CSV Parser library
 - CMake 3.16+
 - C++17 compatible compiler
+- Python 3.7+ (for visualization)
+- matplotlib, numpy, seaborn (Python packages)
 
 ## Building the Project
 
@@ -83,6 +112,12 @@ make
 ./BreastCancerPrediction -r=xml -ts=* -tc=NNfromScratch
 ./BreastCancerPrediction -r=xml -ts=* -tc=NNCustumDatasets
 ```
+
+4. Generate visualizations:
+```bash
+python3 visualize_models.py
+```
+This will create all visualization plots in the `assets/` directory.
 
 ## Data Processing Pipeline
 

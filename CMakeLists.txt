@@ -9,6 +9,7 @@ add_subdirectory(external/csv-parser)
 set(CMAKE_CXX_STANDARD 20)
 
 
+find_package(nlohmann_json QUIET)
 
 add_executable(BreastCancerPrediction models/NNfromScratch.cpp
         include/TrainingPipeline.hpp
@@ -20,8 +21,10 @@ add_executable(BreastCancerPrediction models/NNfromScratch.cpp
         models/NNModels.cpp
         include/NNCustumDatasets.hpp
         models/NNCustumDatasets.cpp
+        export_results.cpp
 )
 
+target_link_libraries(BreastCancerPrediction PRIVATE)
 target_include_directories(BreastCancerPrediction PRIVATE
         "${CMAKE_SOURCE_DIR}/external/libtorch/include"
         "${CMAKE_SOURCE_DIR}/external/libtorch/include/torch/csrc/api/include"
@@ -55,9 +58,9 @@ target_link_libraries(BreastCancerPrediction PRIVATE
         m
 )
 
-
 target_compile_options(BreastCancerPrediction PRIVATE -O3 -Wall)
 set_target_properties(BreastCancerPrediction PROPERTIES
         INSTALL_RPATH "${CMAKE_SOURCE_DIR}/external/libtorch/lib"
         BUILD_WITH_INSTALL_RPATH TRUE
 )
+
